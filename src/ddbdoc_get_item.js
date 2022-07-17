@@ -21,11 +21,11 @@ node ddbdoc_get_item.js
 // snippet-start:[dynamodb.JavaScript.docClient.getV3]
 
 import { GetCommand } from "@aws-sdk/lib-dynamodb";
-import { ddbDocClient } from "./libs/ddbDocClient";
+import { ddbDocClient } from "./libs/ddbDocClient.js";
 
 // Set the parameters.
 export const params = {
-  TableName: "TABLE_NAME",
+  TableName: "TEST_TABLE",
   /*
   Convert the key JavaScript object you are retrieving to the
   required Amazon DynamoDB record. The format of values specifies
@@ -39,8 +39,8 @@ export const params = {
   NullAttribute: null
    */
   Key: {
-    primaryKey: "VALUE", // For example, 'Season': 2.
-    sortKey: "VALUE", // For example,  'Episode': 1; (only required if table has sort key).
+    Season: 1, // For example, 'Season': 2.
+    Episode: 1, // For example,  'Episode': 1; (only required if table has sort key).
   },
 };
 

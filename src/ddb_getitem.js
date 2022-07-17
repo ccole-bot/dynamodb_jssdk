@@ -23,20 +23,25 @@ import { ddbClient } from "./libs/ddbClient.js";
 
 // Set the parameters
 export const params = {
-  TableName: "TABLE_NAME", //TABLE_NAME
+  TableName: "TEST_TABLE", //TABLE_NAME
   Key: {
-    KEY_NAME: { N: "KEY_VALUE" },
+    Season: { N: "1" },
+    Episode: { N: "2" },
   },
-  ProjectionExpression: "ATTRIBUTE_NAME",
+
 };
 
 export const run = async () => {
-  const data = await ddbClient.send(new GetItemCommand(params));
-  console.log("Success", data.Item);
-  return data;
-  
+  try {
+    const data = await ddbClient.send(new GetItemCommand(params));
+    console.log("Success", data.Item);
+    return data;
+  } catch (err) {
+    console.log("Error", err);
+  }
 };
 run();
+
 // snippet-end:[dynamodb.JavaScript.item.getItemV3]
 // For unit tests only.
 // module.exports ={run, params};
